@@ -1,7 +1,7 @@
 <?php
-ob_start();
+ob_start(); //turns on output buffering
 
-// data_default_timezone_set('Asia/Seoul');
+date_default_timezone_set('Asia/Seoul');
 
 try{
     $con = new PDO("mysql:dbname=VideoTube;host=localhost", "root", "");

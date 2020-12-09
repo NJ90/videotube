@@ -7,11 +7,11 @@
 <div class="section resize">
     <div class="section-main column bg-white">
         <?php
-            $formProvider = new VideoDetailsFormProvider();
+            $formProvider = new VideoDetailsFormProvider($con);
             echo $formProvider -> createUploadForm();
 
-            $query = $con -> prepare("SELECT * FROM `categories`");
-            $query->execute();
+
+
         ?>
     </div>
 </div>
