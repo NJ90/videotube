@@ -18,7 +18,7 @@
             $categoriesInput = $this -> createCategoriesInput();
             $uploadButton = $this -> createUploadButton();
 
-            return "<form action='procecssing.php' method='POST'>
+            return "<form action='processing.php' method='POST'>
                 $fileInput
                 $titleInput
                 $descriptionInput
@@ -119,7 +119,7 @@
         }
 
         private function createUploadButton(){
-          return "<button type='submit' class='btn btn-primary' name='upload'>Upload</button>";
+          return "<button type='submit' class='btn btn-primary' name='uploadButton'>Upload</button>";
         }
 
     }
