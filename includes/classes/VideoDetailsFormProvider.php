@@ -13,7 +13,7 @@
             $fileInput = $this -> createFileInput();
             $titleInput = $this -> createTitleInput();
             $descriptionInput = $this -> createDescriptionInput();
-            $selectPrivacy = $this -> selectPrivacyInput();
+            $selectPrivacy = $this -> createPrivacyInput();
             // $submitAction = $this -> submitButton();
             $categoriesInput = $this -> createCategoriesInput();
             $uploadButton = $this -> createUploadButton();
@@ -67,7 +67,7 @@
                     </div>";
         }
 
-        private function selectPrivacyInput(){
+        private function createPrivacyInput(){
             return "  <div class='form-group'>
                         <label for='exampleFormControlSelect1'>
                         <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-plus' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
@@ -76,7 +76,7 @@
                         </svg>
                         Select Private
                         </label>
-                        <select class='form-control' id='exampleFormControlSelect1'>
+                        <select class='form-control' id='privacyInput' name='privacyInput'>
                           <option value='0'>public</option>
                           <option value='1'>private</option>
                         </select>
