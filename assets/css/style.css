@@ -11,7 +11,7 @@
 #header .main-menu{margin: 0 30px 0 10px;}
 #header .header-search-wrap{min-width: 50%; margin-left: 100px;}
 #header .header-search-wrap input{min-width: 50%; max-width:80%; height:30px; line-height: 30px; border: 1px solid #ddd; padding:0 10px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;}
-#header .header-search-wrap button{width: 50px; height:30px; border: 1px solid #ddd; border-top-right-radius: 3px; border-bottom-right-radius: 3px; margin-left: -5px;}
+#header .header-search-wrap button{width: 50px; height:30px; line-height: 30px; border: 1px solid #ddd; border-top-right-radius: 3px; border-bottom-right-radius: 3px; margin-left: -5px;}
 
 #header .header-search-wrap button:hover{background-color: #f2f2f2;}
 #header .header-search-wrap button:hover svg{fill: #333;}
