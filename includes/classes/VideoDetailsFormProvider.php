@@ -13,16 +13,16 @@
             $fileInput = $this -> createFileInput();
             $titleInput = $this -> createTitleInput();
             $descriptionInput = $this -> createDescriptionInput();
-            $selectPrivacy = $this -> createPrivacyInput();
+            $privacyInput = $this -> createPrivacyInput();
             // $submitAction = $this -> submitButton();
             $categoriesInput = $this -> createCategoriesInput();
             $uploadButton = $this -> createUploadButton();
 
-            return "<form action='processing.php' method='POST'>
+            return "<form action='processing.php' method='POST' enctype='multipart/form-data'>
                 $fileInput
                 $titleInput
                 $descriptionInput
-                $selectPrivacy
+                $privacyInput
                 $categoriesInput
                 $uploadButton
             </form>";
@@ -89,7 +89,7 @@
 
         private function createCategoriesInput(){
             // phpmyadmin에서 카테고리 가져오기
-            $query = $this->con->prepare("SELECT * FROM `categories`");
+            $query = $this->con->prepare("SELECT * FROM categories");
             $query->execute();
 
             $html = "<div class='form-group'>

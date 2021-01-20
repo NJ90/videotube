@@ -12,7 +12,7 @@ if(!isset($_POST["uploadButton"])) {
 // 1) 업로드 데이터 생성
 $videoUploadData = new VideoUploadData(
     // $_POST["name"],
-    $_POST["fileInput"],
+    $_FILES["fileInput"],
     $_POST["titleInput"],
     $_POST["descriptionInput"],
     $_POST["privacyInput"],
@@ -22,7 +22,7 @@ $videoUploadData = new VideoUploadData(
 
 // 2) 비디오 데이터 업로드
 $videpProcessor = new VideoProcessor($con);
-$wasSuccessful = $videoProcessor->upload();
+$wasSuccessful = $videoProcessor->upload($videoUpoadData);
 
 // 3) 업로드가 제대로 되었는지 확인
 

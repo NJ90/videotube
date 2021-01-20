@@ -7,11 +7,8 @@
 <div class="section resize">
     <div class="section-main column bg-white">
         <?php
-            $formProvider = new VideoDetailsFormProvider($con);
-            echo $formProvider -> createUploadForm();
-
-
-
+        $formProvider = new VideoDetailsFormProvider($con);
+        echo $formProvider->createUploadForm();
         ?>
     </div>
 </div>
