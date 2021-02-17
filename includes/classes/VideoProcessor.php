@@ -29,6 +29,7 @@ class VideoProcessor{
                 return false;
             }
 
+            // 파일을 upload(temp 위치)폴더로 옮기기 (권한 없음 에러 = 폴더에 읽기 쓰기 권한 주기)
             if(move_uploaded_file($videoData["tmp_name"], $tempFilePath)){
                 echo "File moved successfully";
             }
