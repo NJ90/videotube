@@ -40,7 +40,7 @@ class VideoProcessor{
 
                 if(!$this->insertVideoData($videoUploadData, $finalFilePath)){
                     echo "Insert query failed";
-                    require false;
+                    return false;
                 }
 
             }
@@ -84,8 +84,19 @@ class VideoProcessor{
     }
 
     // final path
-    private function insertVideoData($uploadData, $filePath){
-        
+    // phpMyAdmin DB에서 INT 항목에는(privacy, category, views) 기본값 부분에 0을 넣어준다.
+    private function insertVideoData($uploadData, $filePath) {
+        $query = $this->con->prepare("INSERT INTO videos(title, uploadedBy, description, privacy, category, filePath)
+                                        VALUES(:title, :uploadedBy, :description, :privacy, :category, :filePath)");
+
+        $query->bindParam(":title", $uploadData->title);
+        $query->bindParam(":uploadedBy", $uploadData->uploadedBy);
+        $query->bindParam(":description", $uploadData->description);
+        $query->bindParam(":privacy", $uploadData->privacy);
+        $query->bindParam(":category", $uploadData->category);
+        $query->bindParam(":filePath", $filePath);
+
+        return $query->execute();
     }
 }
 ?>
