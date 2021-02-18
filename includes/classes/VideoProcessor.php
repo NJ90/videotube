@@ -30,8 +30,19 @@ class VideoProcessor{
             }
 
             // 파일을 upload(temp 위치)폴더로 옮기기 (권한 없음 에러 = 폴더에 읽기 쓰기 권한 주기)
+            // if(move_uploaded_file($videoData["tmp_name"], $tempFilePath)){
+            //     echo "File moved successfully";
+            // }
+
+            // 파일을 final path로 옮기기 (가장 보편적으로 지원되는 mp4 형식만 저장)
             if(move_uploaded_file($videoData["tmp_name"], $tempFilePath)){
-                echo "File moved successfully";
+                $finalFilePath = $targetDir . uniqid() . ".mp4";
+
+                if(!$this->insertVideoData($videoUploadData, $finalFilePath)){
+                    echo "Insert query failed";
+                    require false;
+                }
+
             }
     }
 
@@ -70,6 +81,11 @@ class VideoProcessor{
     // error 컨트롤
     private function hasError($data){
         return $data["error"] != 0;
+    }
+
+    // final path
+    private function insertVideoData($uploadData, $filePath){
+        
     }
 }
 ?>
