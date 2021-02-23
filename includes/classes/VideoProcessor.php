@@ -88,7 +88,7 @@ class VideoProcessor{
     private function insertVideoData($uploadData, $filePath) {
         $query = $this->con->prepare("INSERT INTO videos(title, uploadedBy, description, privacy, category, filePath)
                                         VALUES(:title, :uploadedBy, :description, :privacy, :category, :filePath)");
-
+                                        //VALUES name은 admin에 있는 콜럼 네임과 반드시 똑같아야 한다.
         $query->bindParam(":title", $uploadData->title);
         $query->bindParam(":uploadedBy", $uploadData->uploadedBy);
         $query->bindParam(":description", $uploadData->description);
