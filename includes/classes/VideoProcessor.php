@@ -3,6 +3,7 @@ class VideoProcessor{
     private $con;
     private $sizeLimit = 500000000;
     private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogv", "ogg", "avi", "wmv", "mov", "mpeg", "mpg");
+    private $ffmpegPath = "ffmpeg/bin/ffmpeg";
 
     public function __construct($con){
         $this->con = $con;
@@ -40,6 +41,11 @@ class VideoProcessor{
 
                 if(!$this->insertVideoData($videoUploadData, $finalFilePath)){
                     echo "Insert query failed";
+                    return false;
+                }
+                // 파일 업로드 실패했을 때 알럿
+                if(!$this->convertVideoToMp4($tempFilePath, $finalFilePath)){
+                    echo "Upload failed";
                     return false;
                 }
 
@@ -97,6 +103,21 @@ class VideoProcessor{
         $query->bindParam(":filePath", $filePath);
 
         return $query->execute();
+    }
+
+    // 37. Converting the video to MP4 server side
+    public function convertVideoToMp4($tempFilePath, $finalFilePath){
+        $cmd = "$this->$ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
+
+        $outputLog = array();
+        exec($cmd, $outputLog, $returnCode);
+
+        if($returnCode != 0)
+            //command failed
+            foreach($outputLog as $line){
+                echo $line . "<br>";
+            }
+            return false;
     }
 }
 ?>
