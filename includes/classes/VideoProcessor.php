@@ -48,9 +48,9 @@ class VideoProcessor{
                     echo "Upload failed";
                     return false;
                 }
-
             }
     }
+    
 
     private function processData($videoData, $filePath) {
         $videoType = pathInfo($filePath, PATHINFO_EXTENSION);
