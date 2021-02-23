@@ -107,7 +107,7 @@ class VideoProcessor{
 
     // 37. Converting the video to MP4 server side
     public function convertVideoToMp4($tempFilePath, $finalFilePath){
-        $cmd = "$this->$ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
+        $cmd = "$this->ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
 
         $outputLog = array();
         exec($cmd, $outputLog, $returnCode);
