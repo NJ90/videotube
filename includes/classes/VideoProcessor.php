@@ -48,6 +48,12 @@ class VideoProcessor{
                     echo "Upload failed";
                     return false;
                 }
+
+                // tempfile 삭제 실패했을 때 알럿
+                if(!$this->deleteFile($tempFilePath)){
+                    echo "Upload failed";
+                    return false;
+                }
             }
     }
     
@@ -118,6 +124,15 @@ class VideoProcessor{
                 echo $line . "<br>";
             }
             return false;
+    }
+
+    //temp file 삭제
+    private function deleteFile($filePath){
+        if(!unlink($filePath)){
+            echo "Could not delete file\n";
+            return false;
+        }
+        return false;
     }
 }
 ?>
